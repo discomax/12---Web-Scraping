@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import pymongo
-import mars_scrape
+import scrape_mars
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def home():
 @app.route('/scrape')
 def scrape():
     db.collection.remove({})
-    data = mars_scrape.scrape()
+    data = scrape_mars.scrape()
     db.collection.insert_one(data)
     return  render_template('index.html')
 
