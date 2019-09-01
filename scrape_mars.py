@@ -13,11 +13,11 @@ from time import sleep
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    browser = Browser("chrome", **executable_path, headless=False)
+    return Browser("chrome", **executable_path, headless=False)
 
 
 def scrape_info():
-    browser = init_browser
+    browser = init_browser()
 
     # Scrape the [NASA Mars News Site](https://mars.nasa.gov/news/)
     # and collect the latest News Title and Paragraph Text.
@@ -39,12 +39,15 @@ def scrape_info():
     # Navigate to the page with the full, large image
     browser.click_link_by_id("full_image")
     sleep(5)
-    browser.click_link_by_partial_text("more info")
+    # browser.click_link_by_partial_text("more info")
+    # sleep(3)
     html = browser.html
     soup = bs(html, "html.parser")
-    image_url = soup.find("img").get("src")
-    base_url = "https://www.jpl.nasa.gov/spaceimages"
-    featured_img_url = base_url + image_url
+    # soup.find("div", id="fancybox-lock")
+    img_url = soup.find("div", id="fancybox-lock").find("img").get("src")
+    base_url = "https://www.jpl.nasa.gov"
+    featured_img_url = base_url + img_url
+    print(featured_img_url)
 
     ### Mars Weather
     # Visit the Mars Weather twitter account [here](https://twitter.com/marswxreport?lang=en)
@@ -65,7 +68,7 @@ def scrape_info():
     mars_table = pd.read_html(mars_facts_url)
     mars_facts_df = mars_table[0]
     # Convert the data to a HTML table string.
-    mars_facts_html = mars_facts_df.to_html()
+    mars_facts_html = mars_facts_df.to_html(table_id="")
     # print(mars_facts_html.translate({ord('\n'): None}))
 
     ### Mars Hemispheres
