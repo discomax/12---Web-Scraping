@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-md-7">
           <h2>Featured Mars Image</h2>
-          <img src={{ mars_info.featured_image }} width: 50% />
+          <img src={{ mars_info.featured_image }} class="img-responsive" alt="Responsive image" width: 50% />
         </div>
         <div class="col-md-5">
           <div class="row">
@@ -37,6 +37,49 @@
           <div class="row">
             <h4>Mars Facts</h4>
             {{ mars_info.mars_facts | safe }}
+          </div>
+        </div>
+      </div>
+      <h2>Mars Hemishperes</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <img src={{ mars_info.hemisphere_image_urls[0].image_url }} class="img-responsive"
+                  alt="Responsive image" />
+              </div>
+              <div class="panel-footer">{{ mars_info.hemisphere_image_urls[0].title }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <img src={{ mars_info.hemisphere_image_urls[2].image_url }} class="img-responsive"
+                  alt="Responsive image" />
+              </div>
+              <div class="panel-footer">{{ mars_info.hemisphere_image_urls[2].title }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <img src={{ mars_info.hemisphere_image_urls[1].image_url }} class="img-responsive"
+                  alt="Responsive image" />
+              </div>
+              <div class="panel-footer">{{ mars_info.hemisphere_image_urls[1].title }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <img src={{ mars_info.hemisphere_image_urls[3].image_url }} class="img-responsive"
+                  alt="Responsive image" />
+              </div>
+              <div class="panel-footer">{{ mars_info.hemisphere_image_urls[3].title }}</div>
+            </div>
           </div>
         </div>
       </div>

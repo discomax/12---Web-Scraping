@@ -38,7 +38,7 @@ def scrape_info():
     soup = bs(html, "html.parser")
     # Navigate to the page with the full, large image
     browser.click_link_by_id("full_image")
-    sleep(5)
+    sleep(2)
     # browser.click_link_by_partial_text("more info")
     # sleep(3)
     html = browser.html
@@ -95,7 +95,7 @@ def scrape_info():
         hemi_img_soup = bs(browser.html, "html.parser")
         hemi_img_full = hemi_img_soup.find("div", class_="downloads")
         hemi_img_url = hemi_img_full.find("a").get("href")
-        hemi_dict = {"title": title, "image url": hemi_img_url}
+        hemi_dict = {"title": title, "image_url": hemi_img_url}
         hemisphere_img_urls.append(hemi_dict)
     browser.quit()
 
