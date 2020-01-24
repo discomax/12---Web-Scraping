@@ -5,6 +5,9 @@ import scrape_mars
 
 app = Flask(__name__)
 mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
+# driver with connection string for use with MongoDB Atlas AWS cloud service:
+# client = pymongo.MongoClient("mongodb+srv://disco_max:<password>@cluster0-ey2fy.mongodb.net/test?retryWrites=true&w=majority")
+# db = client.test
 
 
 @app.route("/")
